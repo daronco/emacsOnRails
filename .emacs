@@ -300,3 +300,8 @@
 (require 'magit)
 
 (global-set-key (kbd "C-c g") 'magit-status)
+
+; javascript plugin
+(autoload 'javascript-mode "javascript" nil t)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . javascript-mode))
+
