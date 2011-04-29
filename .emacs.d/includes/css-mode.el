@@ -31,7 +31,7 @@
 (defvar css-mode-map nil
   "Keymap for `css-mode'.")
 
-(defvar css-mode-indent-depth 4
+(defvar css-mode-indent-depth 2
   "*Depth of indentation.")
 
 (defvar css-mode-font-lock-keywords-1
@@ -110,7 +110,7 @@
 ;;               ":[ \t]*\\(rgb\\)([ \t]*[0-9]+[ \t]*,[ \t]*[0-9]+[ \t]*,[ \t]*[0-9]+[ \t]*)"
 ;;               1 'font-lock-function-name-face 'prepend))))
 ;;   "Incredibly over-the-top highlighting for `css-mode'.")
-              
+
 (defvar css-mode-font-lock-keywords css-mode-font-lock-keywords-1
   "Default expressions to highlight in `css-mode'.")
 
@@ -171,23 +171,23 @@
   ;; parenthesis, outdent.  If we're inside a comment, indent by
   ;; three, unless the line starts with the closing comment sequence.
   (let* ((indent-data (parse-partial-sexp (point-min)
-					  (line-beginning-position)))
-	 (indent (car indent-data))
-	 (in-comment (nth 4 indent-data))
-	 close-block
-	 close-comment
-	 pos)
+                                          (line-beginning-position)))
+         (indent (car indent-data))
+         (in-comment (nth 4 indent-data))
+         close-block
+         close-comment
+         pos)
     (save-excursion
       (back-to-indentation)
       (setq close-block (looking-at "}")
-	    close-comment (looking-at "\\*/")))
+            close-comment (looking-at "\\*/")))
     (when close-block
       (setq indent (1- indent)))
     (setq pos (* indent css-mode-indent-depth))
     (if (and in-comment (not close-comment))
-	(+ 3 pos)
+        (+ 3 pos)
       pos)))
-      
+
 (defun css-mode-indent-line (&optional indent)
   "Indent the current line.
 
@@ -195,7 +195,7 @@ If optional INDENT is non-nil, use that instead of calculating the
 indent level."
   (interactive)
   (let ((indent (or indent (css-mode-calc-indent-level)))
-	pos)
+        pos)
     (save-excursion
       (back-to-indentation)
       (delete-region (point-at-bol) (point))
@@ -222,24 +222,24 @@ indent level."
   (interactive)
   (condition-case data
       (progn
-	(backward-up-list 1)
-	(forward-char 1)
-	(newline-and-indent)
-	(catch 'done
-	  (let ((start (point)))
-	    (while (re-search-forward "\n\\|;")
-	      (let* ((data (save-excursion
-			     (parse-partial-sexp start (point))))
-		     (depth (nth 0 data))
-		     (in-string (nth 3 data))
-		     (in-comment (nth 4 data)))
-		(when (< depth 0)
-		  (throw 'done t))
-		(when (and (= depth 0)
-			   (not (or in-string in-comment)))
-		  (if (string= (match-string 0) "\n")
-		      (replace-match "")
-		    (newline-and-indent))))))))
+        (backward-up-list 1)
+        (forward-char 1)
+        (newline-and-indent)
+        (catch 'done
+          (let ((start (point)))
+            (while (re-search-forward "\n\\|;")
+              (let* ((data (save-excursion
+                             (parse-partial-sexp start (point))))
+                     (depth (nth 0 data))
+                     (in-string (nth 3 data))
+                     (in-comment (nth 4 data)))
+                (when (< depth 0)
+                  (throw 'done t))
+                (when (and (= depth 0)
+                           (not (or in-string in-comment)))
+                  (if (string= (match-string 0) "\n")
+                      (replace-match "")
+                    (newline-and-indent))))))))
     (scan-error
      (search-forward "{"))))
 

@@ -248,7 +248,7 @@
 (setq default-truncate-lines t)
 
 (require 'haml-mode nil 't)
-(add-to-list 'auto-mode-alist '("\\.sass$" . sass-mode))
+;(add-to-list 'auto-mode-alist '("\\.sass$" . sass-mode))
 
 (global-set-key (kbd "C-c v") 'rspec-verify)
 (global-set-key (kbd "C-c a") 'rspec-verify-all)
@@ -304,4 +304,10 @@
 ; javascript plugin
 (autoload 'javascript-mode "javascript" nil t)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . javascript-mode))
+
+; SASS (https://github.com/nex3/sass-mode)
+(require 'sass-mode)
+
+; SCSS (https://github.com/antonj/scss-mode)
+(require 'scss-mode)
 
