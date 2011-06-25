@@ -324,3 +324,13 @@
  (set (make-local-variable 'tab-width) 2)
  (set (make-local-variable 'coffee-tab-width) 2))
 (add-hook 'coffee-mode-hook '(lambda () (coffee-custom)))
+
+; feature-mode for cucumber:
+; https://github.com/michaelklishin/cucumber.el
+(add-to-list 'load-path "~/.emacs.d/plugins/feature-mode")
+(setq feature-default-language "en")
+; point to cucumber languages.yml or gherkin i18n.yml to use
+; exactly the same localization your cucumber uses
+;(setq feature-default-i18n-file "/path/to/gherkin/gem/i18n.yml")
+(require 'feature-mode)
+(add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
