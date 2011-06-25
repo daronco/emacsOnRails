@@ -311,3 +311,18 @@
 ; SCSS (https://github.com/antonj/scss-mode)
 (require 'scss-mode)
 
+; coffee-mode:
+; http://ozmm.org/posts/coffee_mode.html
+; https://github.com/defunkt/coffee-mode
+(add-to-list 'load-path "~/.emacs.d/plugins/coffee-mode")
+(require 'coffee-mode)
+(add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
+(add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
+; indent with 2 spaces in coffee-mode
+(defun coffee-custom ()
+  "coffee-mode-hook"
+ (set (make-local-variable 'tab-width) 2)
+ (set (make-local-variable 'coffee-tab-width) 2))
+(add-hook 'coffee-mode-hook '(lambda () (coffee-custom)))
+
+(setq coffee-debug-mode t)
