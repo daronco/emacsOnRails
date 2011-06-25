@@ -294,6 +294,8 @@
 
 ;(autotest)
 
+(setq-default tab-width 2)
+
 (require 'ruby-block)
 (ruby-block-mode t)
 
@@ -310,6 +312,7 @@
 
 ; SCSS (https://github.com/antonj/scss-mode)
 (require 'scss-mode)
+(setq-default scss-compile-at-save nil)
 
 ; coffee-mode:
 ; http://ozmm.org/posts/coffee_mode.html
