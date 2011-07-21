@@ -294,8 +294,6 @@
 
 ;(autotest)
 
-(setq-default tab-width 2)
-
 (require 'ruby-block)
 (ruby-block-mode t)
 
@@ -337,3 +335,8 @@
 ;(setq feature-default-i18n-file "/path/to/gherkin/gem/i18n.yml")
 (require 'feature-mode)
 (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
+
+; Personal settings
+(setq-default tab-width 2)
+(global-set-key (kbd "C-c l") 'goto-line)
+;;
