@@ -32,7 +32,7 @@ if [[ $REPLY == [yY] ]]; then
     echo "Copying .emacs to ${HOME}"
     cp .emacs ~/.emacs
     echo "Copying .emacs.d/ to ${HOME}"
-    cp -r .emacs.d/ ~/.emacs.d
+    cp -r .emacs.d/ ~/
 else
     echo "Aborted."
 fi
