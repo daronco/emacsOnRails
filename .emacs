@@ -352,4 +352,21 @@
 ; Personal settings
 (setq-default tab-width 2)
 (global-set-key (kbd "C-c l") 'goto-line)
-;;
+
+;; Turn off the menu bar
+(menu-bar-mode 0)
+
+;; Change the scrolling to "jump" less
+;(setq scroll-preserve-screen-position t)
+;(setq scroll-conservatively 50)
+
+;; Use Ctrl-^ (Ctrl-6) to set the mark.
+;(global-set-key (kbd "<select>") 'set-mark-command)
+;; The End key seems to be messed up through PuTTY, but this fixes it:
+(global-set-key (kbd "<select>") 'end-of-line)
+
+; Hack to enable shift+up to select text
+; https://groups.google.com/group/gnu.emacs.help/browse_thread/thread/ad1e3bf07e010d4f?pli=1
+(defadvice terminal-init-xterm (after select-shift-up activate)
+  (define-key input-decode-map "\e[1;2A" [S-up]))
+
