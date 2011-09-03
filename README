@@ -17,3 +17,8 @@ Changelog (2011/07/15):
 
  - Added feature-mode (for cucumber): https://github.com/michaelklishin/cucumber.el
  - Added coffee-mode (for coffeescript): https://github.com/defunkt/coffee-mode
+
+Changelog (2011/09/03):
+
+ - New version for yasnippets (0.6.1c): http://code.google.com/p/yasnippet/
+   - Command "C-c C-SPC" opens the drop-down menu to select a snippet.
