@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Installs the files in the current user's home
+# Usage:
+#   ./user-install
+#   ./user-install [--yes|-y]  # do not ask for permission to proceed
+#
+
+while [ $# -gt 0 ]; do
+    if [ "$1" = "--yes" -o "$1" = "-y" ]; then
+        FORCE_YES=1
+        shift
+        continue
+    fi
+done
+
+echo
+echo "--------------------------------------------------------------------------------"
+echo " WARNING: this will override the following files/directories:"
+echo "          ${HOME}/.emacs"
+echo "          ${HOME}/.emacs.d/"
+echo "--------------------------------------------------------------------------------"
+echo
+
+if [ $FORCE_YES ]; then
+    REPLY=y
+else
+    read -p "Proceed (y/N)?"
+fi
+
+if [[ $REPLY == [yY] ]]; then
+    echo "Copying .emacs to ${HOME}"
+    cp .emacs ~/.emacs
+    echo "Copying .emacs.d/ to ${HOME}"
+    cp -r .emacs.d/ ~/
+else
+    echo "Aborted."
+fi
