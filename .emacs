@@ -349,7 +349,8 @@
 (global-set-key (kbd "C-c C-SPC") 'yas/insert-snippet)
 
 
-; Personal settings
+;;;;;;; Personal settings
+
 (setq-default tab-width 2)
 (global-set-key (kbd "C-c l") 'goto-line)
 
@@ -370,3 +371,9 @@
 (defadvice terminal-init-xterm (after select-shift-up activate)
   (define-key input-decode-map "\e[1;2A" [S-up]))
 
+;; save a list of open files in ~/.emacs.desktop
+;; save the desktop file automatically if it already exists
+(setq desktop-save 'if-exists)
+(desktop-save-mode 1)
+
+;;;;;;;
