@@ -350,8 +350,9 @@
 
 
 ;;;;;;; Personal settings
-
 (setq-default tab-width 2)
+(add-hook 'python-mode-hook '(lambda () ; 2-space indent in python
+  (setq python-indent 2)))
 (global-set-key (kbd "C-c l") 'goto-line)
 
 ;; Turn off the menu bar
@@ -373,7 +374,7 @@
 
 ;; save a list of open files in ~/.emacs.desktop
 ;; save the desktop file automatically if it already exists
-(setq desktop-save 'if-exists)
-(desktop-save-mode 1)
+;(setq desktop-save 'if-exists)
+;(desktop-save-mode 1)
 
 ;;;;;;;
