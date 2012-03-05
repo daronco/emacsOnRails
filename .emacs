@@ -350,9 +350,10 @@
 
 
 ;;;;;;; Personal settings
-(setq-default tab-width 2)
-(add-hook 'python-mode-hook '(lambda () ; 2-space indent in python
+(setq-default tab-width 2)                 ; 2-space indent as default
+(add-hook 'python-mode-hook '(lambda ()    ; 2-space indent in python
   (setq python-indent 2)))
+(setq js-indent-level 2)                   ; 2-space indent for javascript
 (global-set-key (kbd "C-c l") 'goto-line)
 
 ;; Turn off the menu bar
