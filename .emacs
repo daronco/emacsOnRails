@@ -352,6 +352,13 @@
 (require 'less-css-mode)
 (add-to-list 'auto-mode-alist '("\\.less$" . less-css-mode))
 
+; jade template language
+; from: https://github.com/brianc/jade-mode
+(add-to-list 'load-path "~/.emacs.d/plugins/jade-mode")
+(require 'sws-mode)
+(require 'jade-mode)
+(add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
+
 ;;;;;;; Personal settings
 (setq-default tab-width 2)                 ; 2-space indent as default
 (add-hook 'python-mode-hook '(lambda ()    ; 2-space indent in python
