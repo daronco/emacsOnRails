@@ -348,6 +348,9 @@
 (yas/load-directory "~/.emacs.d/plugins/yasnippet-0.6.1c/snippets")
 (global-set-key (kbd "C-c C-SPC") 'yas/insert-snippet)
 
+; lesscss
+(require 'less-css-mode)
+(add-to-list 'auto-mode-alist '("\\.less$" . less-css-mode))
 
 ;;;;;;; Personal settings
 (setq-default tab-width 2)                 ; 2-space indent as default
